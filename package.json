@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "postbuild": "node scripts/copy-index-to-200.js",
+    "start": "node scripts/static-server.js",
     "preview": "vite preview"
   },
   "dependencies": {
