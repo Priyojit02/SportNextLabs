@@ -131,6 +131,12 @@ body {
 /* Match card styles */
 .match-card {
   @apply bg-gray-800 rounded-lg border border-gray-700 transition-all duration-200 relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+  height: calc(2.75rem * 2); /* fixed total card height (2 player slots) */
+  min-height: calc(2.75rem * 2);
 }
 
 .match-card:hover {
@@ -147,10 +153,10 @@ body {
 
 /* Player slot styles */
 .player-slot {
-  @apply px-2 py-1.5 border-b border-gray-700 last:border-b-0 cursor-pointer transition-colors;
+  @apply px-2 py-1.5 border-b border-gray-700 last:border-b-0 cursor-pointer transition-colors overflow-hidden;
   display: flex;
   align-items: center;
-  min-height: 2.25rem; /* keep player slots visually consistent */
+  height: 2.75rem; /* fixed height so slots don't resize */
 }
 
 .player-slot:hover {
