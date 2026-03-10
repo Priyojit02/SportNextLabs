@@ -35,6 +35,13 @@ export const MatchModal: React.FC<MatchModalProps> = ({ match, rules, onClose, o
 
   const updateGameScore = (gameIndex: number, player: 'player1' | 'player2', value: string) => {
     const points = parseInt(value) || 0;
+    // Validate against pointsPerGame (rules)
+    if (points > pointsPerGame) {
+      setError(`Maximum points per game is ${pointsPerGame}. Change the rule book if you want a different limit.`);
+      // Clear error after a short delay so user sees the popup
+      setTimeout(() => setError(null), 3500);
+      return;
+    }
     const newGames = [...games];
     if (player === 'player1') {
       newGames[gameIndex].player1Points = points;
