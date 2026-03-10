@@ -148,6 +148,9 @@ body {
 /* Player slot styles */
 .player-slot {
   @apply px-2 py-1.5 border-b border-gray-700 last:border-b-0 cursor-pointer transition-colors;
+  display: flex;
+  align-items: center;
+  min-height: 2.25rem; /* keep player slots visually consistent */
 }
 
 .player-slot:hover {
