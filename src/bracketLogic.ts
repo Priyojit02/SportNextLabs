@@ -172,9 +172,16 @@ function advanceByeWinners(tournament: Tournament): void {
     const match = secondRound.matches[i];
     // Check if only one player exists in this match
     const onlyOnePlayer = (match.player1 && !match.player2) || (!match.player1 && match.player2);
-    
-    // Mark as bye if only one player exists (regardless of feeder status)
-    if (onlyOnePlayer) {
+    // Determine feeder matches from round 1
+    const feeder1 = firstRound.matches[i * 2];
+    const feeder2 = firstRound.matches[i * 2 + 1];
+
+    // Only mark as a bye if both feeder matches were byes (i.e., there cannot be
+    // another opponent later). If one feeder was a normal match (not a bye),
+    // its winner will be decided later so we should not auto-mark this match as a bye.
+    const bothFeedersByes = !!(feeder1 && feeder2 && feeder1.isBye && feeder2.isBye);
+
+    if (onlyOnePlayer && bothFeedersByes) {
       match.isBye = true;
       match.winner = match.player1 || match.player2;
     }
