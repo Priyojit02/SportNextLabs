@@ -71,7 +71,7 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, onSelectWinner, isC
                 </span>
               )}
             </div>
-            <span className={`text-sm truncate ${isWinner ? 'font-bold' : ''}`}>
+            <span className={`text-sm truncate whitespace-nowrap ${isWinner ? 'font-bold' : ''}`} title={player.name}>
               {player.name}
             </span>
           </div>
@@ -110,9 +110,8 @@ export const MatchCard: React.FC<MatchCardProps> = ({ match, onSelectWinner, isC
     <div
       className={`${getCardClass()} ${isClickable && match.player1 && match.player2 && !match.winner ? 'cursor-pointer' : ''}`}
       onClick={handleClick}
-      style={{ minWidth: '170px' }}
+      style={{ width: '260px', minWidth: '260px' }}
     >
-      
       {renderPlayer(match.player1, 'top')}
       {renderPlayer(match.player2, 'bottom')}
     </div>
